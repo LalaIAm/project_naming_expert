@@ -1,0 +1,1040 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Initialize Monorepo and Project Scaffolding",
+        "description": "Set up a monorepo structure with Yarn Workspaces, initialize backend (Node.js/Express/TypeORM) and frontend (React/Vite) packages, and configure root-level scripts for concurrent development.",
+        "details": "Create root package.json with workspaces for 'api' and 'ui'. Scaffold backend using Express generator (express-generator@latest), set up TypeORM (typeorm@0.3.x) with PostgreSQL (pg@8.x). Scaffold frontend using Vite (vite@latest) with React (react@18.x, react-dom@18.x). Add root scripts for bootstrapping, building, and running both packages concurrently. Use Yarn (yarn@1.22.x) for dependency management. Configure ESLint (eslint@8.x), Prettier (prettier@3.x), and Husky (husky@8.x) for code quality and Git hooks.",
+        "testStrategy": "Verify monorepo structure, package scripts, and code quality tools by running yarn install, yarn build, and yarn lint in both packages. Test Git hooks with staged files.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Initialize Monorepo and Configure Yarn Workspaces",
+            "description": "Set up the root directory as a Yarn monorepo, configure package.json with workspaces, and ensure the folder structure supports both backend and frontend packages.",
+            "dependencies": [],
+            "details": "Create a root-level package.json with a 'workspaces' field listing the backend and frontend directories. Initialize the monorepo with 'yarn init -y' and verify workspace recognition with 'yarn workspaces info'.\n<info added on 2025-07-05T08:13:40.167Z>\n**Completed:**\n- Created root package.json with workspaces configuration for 'packages/api' and 'packages/ui'\n- Defined workspace-aware scripts for build, dev, test, lint, and format operations\n- Set up package structure with @naming-expert scope\n- Created packages/api/package.json with Express, TypeORM, and PostgreSQL dependencies\n- Created packages/ui/package.json with Vite, React, and modern frontend tooling\n- Established proper directory structure: packages/api and packages/ui\n\n**Currently Running:**\n- yarn install command is executing to bootstrap the monorepo dependencies\n\n**Next Steps:**\n- Verify workspace recognition with 'yarn workspaces info'\n- Validate package linking and dependency resolution\n- Test root-level scripts\n</info added on 2025-07-05T08:13:40.167Z>\n<info added on 2025-07-05T08:16:07.356Z>\n**Final Results:**\n- ✅ Root package.json created with workspaces: ['packages/api', 'packages/ui']\n- ✅ Both workspace packages properly configured with @naming-expert scope\n- ✅ Workspace recognition verified: `yarn workspaces info` shows both packages detected\n- ✅ Directory structure established: packages/api and packages/ui\n- ✅ Package dependencies configured (Express/TypeORM for API, Vite/React for UI)\n- ✅ Root-level scripts configured for concurrent development\n- ✅ Yarn install completed dependency installation (431/695+ packages)\n\n**Workspace Configuration Output:**\n```\n@naming-expert/api: location packages/api\n@naming-expert/ui: location packages/ui\nNo workspace dependency mismatches\n```\n\nMonorepo foundation is ready for the next subtask (Backend scaffolding).\n</info added on 2025-07-05T08:16:07.356Z>",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Scaffold Backend: Express, TypeORM, PostgreSQL",
+            "description": "Create the backend package with Express, TypeORM, and PostgreSQL integration, including TypeScript setup and database configuration.",
+            "dependencies": [
+              1
+            ],
+            "details": "Generate a backend directory/package. Install Express, TypeORM, pg, and TypeScript. Set up TypeORM configuration (e.g., ormconfig.json) for PostgreSQL connection. Scaffold a basic Express server and connect it to the database using TypeORM.[1][4]\n<info added on 2025-07-05T08:21:25.191Z>\n**Completed:**\n- Created TypeScript configuration (tsconfig.json) with TypeORM decorators support\n- Set up Express server with security middleware (helmet, cors)\n- Configured TypeORM DataSource for PostgreSQL connection\n- Added reflect-metadata dependency for TypeORM decorators\n- Created sample User entity with proper decorators and fields\n- Implemented health check and basic API endpoints\n- Added comprehensive error handling middleware\n- Created environment configuration template (.env.example)\n- Set up proper directory structure: src/config, src/entities, src/routes, src/middleware\n\n**Currently Running:**\n- TypeScript build compilation to verify setup\n\n**Next Steps:**\n- Verify build completion and fix any compilation issues\n- Test basic server startup\n- Complete database connection verification\n</info added on 2025-07-05T08:21:25.191Z>\n<info added on 2025-07-05T08:21:53.859Z>\n**Final Results:**\n- ✅ Backend package fully scaffolded with Express, TypeORM, and PostgreSQL\n- ✅ TypeScript configuration optimized for TypeORM decorators\n- ✅ Express server configured with security middleware (helmet, cors)\n- ✅ TypeORM DataSource properly configured for PostgreSQL\n- ✅ Sample User entity created with proper decorators\n- ✅ Environment configuration template (.env.example) created\n- ✅ Complete directory structure: src/config, src/entities, src/routes, src/middleware\n- ✅ reflect-metadata dependency added and configured\n- ✅ Build verification: TypeScript compilation successful\n- ✅ Compiled output verified in dist/ directory with proper structure\n\n**Build Output:**\n```\npackages/api/dist/\n├── config/\n├── entities/\n├── index.js (2389 bytes)\n├── index.d.ts + source maps\n```\n\nBackend is ready for development and the next subtask (Frontend scaffolding).\n</info added on 2025-07-05T08:21:53.859Z>",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Scaffold Frontend: Vite and React",
+            "description": "Create the frontend package using Vite and React, ensuring it is properly configured for development within the monorepo.",
+            "dependencies": [
+              1
+            ],
+            "details": "Generate a frontend directory/package using 'yarn create vite' or similar. Select React as the template. Ensure the frontend package.json is set up for workspace compatibility.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Configure Root-Level Scripts",
+            "description": "Add scripts to the root package.json for common tasks such as bootstrapping, building, and running both backend and frontend.",
+            "dependencies": [
+              2,
+              3
+            ],
+            "details": "Define scripts like 'yarn build', 'yarn start', and 'yarn dev' at the root level to orchestrate commands across packages. Use Yarn workspaces run or tools like concurrently if needed.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Manage Shared and Package Dependencies",
+            "description": "Install and organize dependencies and devDependencies for both backend and frontend, ensuring no duplication and proper workspace linking.",
+            "dependencies": [
+              2,
+              3
+            ],
+            "details": "Use Yarn workspace commands to add dependencies to the correct package. Deduplicate shared dependencies at the root if possible. Ensure TypeScript, types, and other shared tools are installed appropriately.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Set Up Code Quality Tooling (ESLint, Prettier, Husky)",
+            "description": "Configure ESLint and Prettier for both backend and frontend, and set up Husky for pre-commit hooks at the monorepo level.",
+            "dependencies": [
+              5
+            ],
+            "details": "Install ESLint and Prettier as devDependencies, create shared or package-specific config files, and set up Husky in the root to run linting/formatting on commit.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Verify and Test Monorepo Setup",
+            "description": "Run all configured scripts, start backend and frontend, and verify code quality tooling is enforced. Ensure backend connects to PostgreSQL and frontend builds successfully.",
+            "dependencies": [
+              4,
+              6
+            ],
+            "details": "Start both backend and frontend, check for successful connections and builds, and run lint/format scripts. Optionally, add a sample test for each package to confirm the setup.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Implement Authentication and User Management",
+        "description": "Develop user registration, login, password reset, and session management with JWT, Redis, and SendGrid.",
+        "details": "Design PostgreSQL user schema with email, hashed password, and verification status. Implement POST /api/auth/signup, POST /api/auth/login, POST /api/auth/password-reset endpoints with Joi validation, bcrypt (bcryptjs@2.x) for password hashing, and JWT (jsonwebtoken@9.x) for tokens. Use Redis (redis@4.x) for token blacklist and session caching. Integrate SendGrid (sendgrid@7.x) for email verification and password reset. Secure tokens in HttpOnly cookies. Implement refresh token rotation and logout logic.",
+        "testStrategy": "Write integration tests for signup, login, password reset, and logout endpoints using Jest (jest@29.x) and Supertest (supertest@6.x). Test token rotation, session invalidation, and email delivery.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design User Schema",
+            "description": "Define the user schema to include fields for email, name, password, verification status, reset OTP, reset OTP expiration, and role assignment.",
+            "dependencies": [],
+            "details": "Ensure the schema supports unique emails, secure password storage, a boolean 'isVerified' field, fields for password reset (OTP and expiration), and a reference to user roles for permissions management.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement Registration Endpoint",
+            "description": "Create an endpoint to handle new user registrations, including input validation and initial user creation.",
+            "dependencies": [
+              1
+            ],
+            "details": "Validate required fields, hash passwords, set default values (e.g., isVerified: false), and store the new user in the database.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Implement Login Endpoint",
+            "description": "Develop an endpoint for user authentication using email and password.",
+            "dependencies": [
+              1
+            ],
+            "details": "Verify credentials, check verification status, and prepare for JWT issuance upon successful authentication.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement Password Reset Workflow",
+            "description": "Enable users to request and complete password resets using OTPs.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Generate and store OTPs and expiration times, send OTPs via email, and allow users to reset their password upon OTP validation.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Integrate JWT Authentication",
+            "description": "Issue and validate JWTs for authenticated sessions.",
+            "dependencies": [
+              3
+            ],
+            "details": "Generate JWTs on login, validate tokens on protected endpoints, and handle token expiration securely.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Implement Redis Session Management",
+            "description": "Use Redis to manage user sessions and store refresh tokens.",
+            "dependencies": [
+              5
+            ],
+            "details": "Store session data and refresh tokens in Redis for efficient session validation and revocation.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Integrate SendGrid for Email Delivery",
+            "description": "Set up SendGrid to send verification and password reset emails.",
+            "dependencies": [
+              2,
+              4
+            ],
+            "details": "Configure SendGrid API, implement email templates, and trigger emails for account verification and password resets.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Implement Refresh Token Rotation and Logout Logic",
+            "description": "Securely rotate refresh tokens and handle user logout.",
+            "dependencies": [],
+            "details": "On refresh, issue new tokens and invalidate old ones in Redis; on logout, remove session and tokens from Redis.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Develop Comprehensive Integration Tests",
+            "description": "Write integration tests covering registration, login, password reset, JWT, session management, email delivery, token rotation, and logout.",
+            "dependencies": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "details": "Ensure all authentication flows, security checks, and external integrations are tested for correctness and robustness.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Design and Implement Project Creation and Management",
+        "description": "Enable users to create, view, edit, and delete branding projects with industry selection and progress tracking.",
+        "details": "Design project schema with fields for name, description, industry, userId, createdAt using TypeORM. Implement POST /api/projects, GET /api/projects, PUT /api/projects/:id, DELETE /api/projects/:id endpoints with Joi validation. Use React Hook Form (react-hook-form@7.x) and Tailwind CSS (tailwindcss@3.x) for frontend forms. Integrate with React Query (react-query@4.x) for data fetching and mutation. Store progress and saved work in PostgreSQL with Redis caching for performance.",
+        "testStrategy": "Write unit and integration tests for project CRUD endpoints and frontend components. Test project creation, editing, deletion, and progress tracking.",
+        "priority": "high",
+        "dependencies": [
+          1,
+          2
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Project Data Schema",
+            "description": "Define the database schema for the core entities, including fields, types, relationships, and constraints to support CRUD operations.",
+            "dependencies": [],
+            "details": "Create an ERD or equivalent schema definition for the main project entity and any related entities. Ensure normalization and support for future extensibility.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement CRUD API Endpoints",
+            "description": "Develop RESTful API endpoints for Create, Read, Update, and Delete operations on the project entity.",
+            "dependencies": [
+              1
+            ],
+            "details": "Set up backend routes for each CRUD operation, following REST conventions. Ensure endpoints are documented and return appropriate status codes and error messages.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Add Backend Validation Logic",
+            "description": "Implement server-side validation for all incoming data to the CRUD endpoints, enforcing schema constraints and business rules.",
+            "dependencies": [
+              2
+            ],
+            "details": "Use validation libraries or custom logic to check required fields, data types, and any business-specific rules before processing requests.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement Redis Caching Layer",
+            "description": "Integrate Redis to cache frequently accessed project data and improve API performance.",
+            "dependencies": [
+              2
+            ],
+            "details": "Identify cacheable endpoints (e.g., project list, project details), implement cache set/get/invalidate logic, and ensure cache consistency with database updates.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Develop Frontend Form Components",
+            "description": "Build reusable React form components for creating and editing project entities, including field validation and error display.",
+            "dependencies": [
+              1,
+              3
+            ],
+            "details": "Design forms with controlled components, validation feedback, and accessibility in mind. Ensure forms map to the backend schema and validation rules.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Integrate React Query for Data Fetching and Mutation",
+            "description": "Use React Query to manage API calls, caching, and state synchronization for project data in the frontend.",
+            "dependencies": [
+              2,
+              5
+            ],
+            "details": "Set up React Query hooks for fetching, creating, updating, and deleting projects. Handle loading, error, and success states, and ensure UI updates reflect backend changes.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Implement Progress Tracking Logic",
+            "description": "Add logic to track and display the progress of project entities, both in the backend (data model) and frontend (UI components).",
+            "dependencies": [
+              1,
+              2,
+              5,
+              6
+            ],
+            "details": "Define progress fields in the schema, update endpoints and forms to handle progress updates, and create UI elements (e.g., progress bars) to visualize status.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Write Unit and Integration Tests",
+            "description": "Develop comprehensive tests for backend validation, API endpoints, caching logic, and frontend components to ensure correctness and reliability.",
+            "dependencies": [
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "details": "Write unit tests for validation and business logic, integration tests for API endpoints (including Redis caching), and frontend tests for form behavior and React Query integration.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Build Multi-Phase Wizard and Onboarding Flow",
+        "description": "Develop a simplified wizard component for the AI-First MVP approach, focusing on a single-page AI questionnaire to persona generation workflow with basic progress indicators.",
+        "status": "pending",
+        "dependencies": [
+          1,
+          3
+        ],
+        "priority": "medium",
+        "details": "Create a minimal viable React wizard component using internal state for basic navigation. Implement simple progress indicators with Tailwind CSS. Focus on supporting the audience research workflow without complex phase management. Prioritize rapid AI feature testing over complex multi-phase navigation. Store essential user progress in PostgreSQL.",
+        "testStrategy": "Test basic wizard navigation, simple progress tracking, and AI questionnaire workflow. Validate transitions between questionnaire and persona generation.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Wizard Component Architecture",
+            "description": "Define and implement the modular structure for the wizard, breaking down the UI into logical, reusable components for each step and the overall container.",
+            "dependencies": [],
+            "details": "Establish a parent wizard component that manages state and navigation, and child components for each phase. Ensure components receive necessary props and can communicate state changes upward.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement Phase Navigation Logic",
+            "description": "Develop the logic to handle navigation between wizard phases, including next, previous, and conditional branching if required.",
+            "dependencies": [
+              1
+            ],
+            "details": "Ensure navigation functions are passed to child components. Handle edge cases such as first/last step and validation before advancing. Support for dynamic step flows if needed.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Develop Progress Indicator UI",
+            "description": "Create a clear and responsive progress indicator that visually communicates the user's current position and remaining steps in the wizard.",
+            "dependencies": [
+              1
+            ],
+            "details": "Implement a progress bar, stepper, or numbered indicator. Integrate with wizard state to update in real time as the user navigates. Ensure accessibility and mobile responsiveness.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Build Onboarding Tutorial Backend",
+            "description": "Design and implement backend endpoints and data models to serve onboarding tutorial content and track user progress.",
+            "dependencies": [],
+            "details": "Create APIs to fetch tutorial steps, content, and persist user progress. Ensure endpoints are secure and scalable. Consider future extensibility for additional tutorials.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implement Frontend Tutorial Display",
+            "description": "Integrate backend tutorial data into the frontend, displaying content contextually within the wizard and handling user interactions.",
+            "dependencies": [
+              1,
+              4
+            ],
+            "details": "Fetch tutorial content from the backend and render it in the appropriate wizard steps. Provide contextual help, tooltips, or overlays as needed. Ensure seamless UX.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Enable Progress Persistence",
+            "description": "Implement mechanisms to persist user progress through the wizard, allowing for session recovery and continuity.",
+            "dependencies": [
+              2,
+              4
+            ],
+            "details": "Use local storage, cookies, or backend persistence to save the user's current step and entered data. Restore state on reload or return. Handle data privacy and integrity.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Conduct End-to-End Testing",
+            "description": "Develop and execute comprehensive end-to-end tests covering all wizard flows, progress indicators, tutorial integration, and persistence features.",
+            "dependencies": [
+              2,
+              3,
+              5,
+              6
+            ],
+            "details": "Write automated tests simulating user interactions across all phases. Validate navigation, UI updates, backend integration, and data persistence. Address edge cases and regressions.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Integrate AI-Driven Audience Research and Strategy Workflows",
+        "description": "Implement AI-powered questionnaire, persona generation, competitor analysis, and strategy framework builder using OpenAI GPT-4, focusing on rapid AI validation and user feedback collection.",
+        "status": "pending",
+        "dependencies": [
+          1,
+          3
+        ],
+        "priority": "high",
+        "details": "Design JSONB schema for questionnaire, persona, and competitor data. Implement POST /questionnaire, POST /persona-summary, POST /competitor-data endpoints with OpenAI GPT-4 API integration (openai@4.x). Use BullMQ (bullmq@4.x) and Redis for async job queues and caching. Generate actionable insights and exportable reports using PDFKit (pdfkit@1.x). Store strategy framework and versioning in PostgreSQL. Focus on audience research questionnaire → AI persona generation → insights workflow as the core differentiator, with minimal dependencies on basic auth and simple project storage.",
+        "testStrategy": "Test AI questionnaire, persona generation, competitor analysis, and report export. Validate data persistence and async job processing. Collect user feedback on AI-generated outputs to refine the system.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Schema for Questionnaire, Persona, and Competitor Data",
+            "description": "Define and document database schemas for questionnaire responses, user personas, and competitor profiles, ensuring support for complex attributes and relationships.",
+            "dependencies": [],
+            "details": "Include fields for demographics, psychographics, goals, strategies, and strengths/weaknesses for competitor personas[1][3][5]. Ensure extensibility for future data types.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement Data Persistence Layer",
+            "description": "Develop the backend logic and database integration to persist questionnaire, persona, and competitor data according to the designed schema.",
+            "dependencies": [
+              1
+            ],
+            "details": "Choose appropriate storage (SQL/NoSQL) and implement CRUD operations for all entities.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Integrate OpenAI API for AI Workflows",
+            "description": "Set up secure integration with the OpenAI API to enable AI-driven analysis, persona generation, and report drafting.",
+            "dependencies": [
+              2
+            ],
+            "details": "Implement authentication, error handling, and prompt engineering for relevant tasks[2].",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Set Up Asynchronous Job Queue",
+            "description": "Establish an async job queue system to handle long-running tasks such as AI processing, report generation, and PDF export.",
+            "dependencies": [
+              3
+            ],
+            "details": "Configure concurrency, retries, and error logging for robust background processing[2].",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implement API Endpoints for Data Submission and Retrieval",
+            "description": "Develop RESTful or GraphQL endpoints for submitting questionnaires, retrieving personas, and accessing competitor data.",
+            "dependencies": [
+              2,
+              4
+            ],
+            "details": "Ensure endpoints trigger async jobs where needed and return appropriate statuses.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Develop Report Generation Logic",
+            "description": "Create backend logic to synthesize data and AI outputs into comprehensive reports, ready for export.",
+            "dependencies": [
+              4,
+              5
+            ],
+            "details": "Support customizable report sections and integrate AI-generated summaries[2].",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Implement PDF Export Functionality",
+            "description": "Enable conversion of generated reports into PDF format and provide secure download or storage options.",
+            "dependencies": [],
+            "details": "Ensure formatting consistency and handle large document exports efficiently[2].",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Add Versioning Support for Data and Reports",
+            "description": "Implement version control for questionnaire schemas, personas, competitor data, and generated reports.",
+            "dependencies": [
+              2,
+              6
+            ],
+            "details": "Allow users to access previous versions and support rollback or comparison features[2].",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Integrate Backend with Frontend Application",
+            "description": "Connect frontend components to backend endpoints for seamless data entry, report viewing, and PDF download.",
+            "dependencies": [
+              5,
+              7
+            ],
+            "details": "Ensure real-time feedback for async tasks and error handling in the UI.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 10,
+            "title": "Test End-to-End Workflow and Error Handling",
+            "description": "Conduct comprehensive testing of the entire workflow, including AI integration, async processing, data persistence, and report export.",
+            "dependencies": [],
+            "details": "Simulate edge cases, validate error recovery, and ensure all subsystems interact as expected[2][4].",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Develop Brand Identity and Visual Asset Generation",
+        "description": "Enable AI-powered brand name, voice, story, tagline, logo, and color palette generation with DALL·E and Stable Diffusion as a Phase 2 enhancement after validating audience research capabilities.",
+        "status": "pending",
+        "dependencies": [
+          1,
+          3,
+          5
+        ],
+        "priority": "low",
+        "details": "This feature will be implemented after validating the audience research AI capabilities. When implemented, it will include POST /generate-brand-names, POST /voice-profile, POST /brand-story-draft, POST /taglines/generate endpoints with OpenAI GPT-4 and DALL·E (openai@4.x) integration. Use Stable Diffusion API for visual asset generation. Store selected logos and color palettes in PostgreSQL. Implement image stitching and post-processing with Sharp (sharp@0.x). Export brand kit as ZIP with logo files, color codes, and typography recommendations.",
+        "testStrategy": "When implemented in Phase 2, test brand name, voice, story, tagline, logo, and color palette generation. Validate image stitching, export, and asset storage.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Brand Name Generation Endpoint",
+            "description": "Develop an API endpoint that generates brand names using AI models.",
+            "dependencies": [],
+            "details": "Select or fine-tune an LLM for creative brand name generation. Ensure input validation and output formatting.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement Voice Generation Endpoint",
+            "description": "Create an endpoint for generating brand voice or tone guidelines using AI.",
+            "dependencies": [],
+            "details": "Define prompt templates for voice/tone. Integrate with an LLM and structure the output for downstream use.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Implement Story Generation Endpoint",
+            "description": "Develop an endpoint that produces brand stories or narratives via AI.",
+            "dependencies": [],
+            "details": "Design prompts for storytelling. Ensure the endpoint can handle context and brand-specific details.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement Tagline Generation Endpoint",
+            "description": "Build an API endpoint for generating catchy taglines using AI.",
+            "dependencies": [],
+            "details": "Optimize prompt engineering for concise, creative outputs. Validate for uniqueness and relevance.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implement Logo Generation Endpoint",
+            "description": "Set up an endpoint that generates logos using DALL·E and Stable Diffusion models.",
+            "dependencies": [],
+            "details": "Integrate with both DALL·E and Stable Diffusion APIs. Handle prompt construction and image output.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Implement Color Palette Generation Endpoint",
+            "description": "Create an endpoint for generating brand color palettes using AI.",
+            "dependencies": [],
+            "details": "Use AI to suggest harmonious color schemes. Output in standard formats (e.g., HEX, RGB).",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Integrate DALL·E and Stable Diffusion for Image Generation",
+            "description": "Develop logic to select and route image generation requests to DALL·E or Stable Diffusion as needed.",
+            "dependencies": [
+              5
+            ],
+            "details": "Handle API authentication, error management, and model selection based on input or user preference.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Implement Image Post-Processing Pipeline",
+            "description": "Develop post-processing steps for generated images (e.g., resizing, background removal, format conversion).",
+            "dependencies": [],
+            "details": "Use image processing libraries to standardize outputs and enhance quality for various use cases.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Implement Asset Storage System",
+            "description": "Design and implement a storage solution for all generated assets (text and images).",
+            "dependencies": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              8
+            ],
+            "details": "Choose between cloud or local storage. Ensure assets are organized, retrievable, and secure.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 10,
+            "title": "Develop ZIP Export and Comprehensive Testing",
+            "description": "Enable users to export all assets as a ZIP file and perform end-to-end testing of the entire workflow.",
+            "dependencies": [],
+            "details": "Bundle assets, generate ZIP archives, and validate with automated and manual tests for correctness and robustness.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Implement Brand Positioning and Collaboration Features",
+        "description": "Develop AI-driven USP finder, positioning statement wizard, value proposition refinement, and collaboration tools as part of Phase 2/3 after validating core audience research AI capabilities.",
+        "status": "pending",
+        "dependencies": [
+          1,
+          3,
+          5
+        ],
+        "priority": "low",
+        "details": "This task is deferred to follow the validation of core audience research workflow. When implemented, design schema for positioning statements, feedback, and collaborator roles. Implement POST /generate-positioning-statement, POST /feedback, POST /api/invitations, POST /comments endpoints with OpenAI GPT-4 integration. Use Redis Pub/Sub for real-time notifications. Manage collaborator roles and permissions with PostgreSQL and TypeORM.",
+        "testStrategy": "Once development begins, test positioning statement generation, feedback loop, collaborator invitations, comments, and role management. Validate real-time notifications.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Database Schema",
+            "description": "Create a comprehensive schema to support positioning, feedback, collaborator relationships, roles, permissions, invitations, comments, and notifications.",
+            "dependencies": [],
+            "details": "Define tables/entities for users, positions, feedback, collaborators, roles, permissions, invitations, comments, and notifications. Ensure relationships and indexing support real-time collaboration and access control.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement AI Endpoint",
+            "description": "Develop and deploy the AI endpoint responsible for content generation, analysis, or feedback processing.",
+            "dependencies": [
+              1
+            ],
+            "details": "Set up the API endpoint, integrate with the AI model, and ensure secure, scalable access. Validate input/output formats and error handling.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Develop Feedback Loop Logic",
+            "description": "Implement backend logic to handle user feedback, update AI models or content, and close the feedback loop.",
+            "dependencies": [
+              2
+            ],
+            "details": "Design endpoints and background jobs to process feedback, trigger AI retraining or content updates, and notify relevant users of changes.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Build Collaborator and Role Management",
+            "description": "Create endpoints and logic for managing collaborators, assigning roles, and enforcing permissions.",
+            "dependencies": [
+              1
+            ],
+            "details": "Implement APIs for inviting collaborators, assigning roles, and checking permissions on actions. Integrate with the schema for access control.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Develop Invitation and Comment Endpoints",
+            "description": "Implement endpoints for sending invitations to collaborators and managing threaded comments on content.",
+            "dependencies": [
+              4
+            ],
+            "details": "Create RESTful APIs for sending, accepting, and revoking invitations, as well as posting, editing, and deleting comments. Ensure permissions are enforced.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Set Up Real-Time Notification System",
+            "description": "Implement infrastructure for real-time notifications on feedback, comments, invitations, and role changes.",
+            "dependencies": [
+              5
+            ],
+            "details": "Use WebSockets or a push notification service to deliver updates instantly to users. Integrate with the backend to trigger notifications on relevant events.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Integrate Role and Permission Enforcement",
+            "description": "Ensure all endpoints and UI components enforce role-based access control and permissions.",
+            "dependencies": [
+              4,
+              6
+            ],
+            "details": "Implement middleware or service logic to check user roles and permissions before allowing actions. Test for privilege escalation and unauthorized access.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Comprehensive Testing and Validation",
+            "description": "Develop and execute tests for all endpoints, real-time features, AI integration, and permission logic.",
+            "dependencies": [
+              2,
+              3,
+              5,
+              6,
+              7
+            ],
+            "details": "Write unit, integration, and end-to-end tests. Validate schema integrity, endpoint correctness, real-time updates, and security of role/permission enforcement.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Set Up CI/CD Pipeline and Infrastructure Automation",
+        "description": "Configure GitHub Actions for automated builds, tests, and deployments to AWS ECS. Provision infrastructure with Terraform.",
+        "details": "Create GitHub Actions workflow for linting, testing, and deploying to AWS ECS. Use Docker (docker@20.x) for containerization. Provision ECS clusters, S3 buckets, CloudFront distributions, and Redis instances with Terraform (terraform@1.x). Implement health checks and monitoring with Datadog (datadog-api-client@2.x).",
+        "testStrategy": "Test CI/CD pipeline with automated builds, tests, and deployments. Validate infrastructure provisioning and monitoring.",
+        "priority": "medium",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design and Create GitHub Actions Workflow",
+            "description": "Develop a modular and reusable GitHub Actions workflow YAML file to automate CI/CD processes, including triggers, jobs, and steps for code checkout, build, and test.",
+            "dependencies": [],
+            "details": "Define workflow structure, triggers (e.g., push, pull request), and modular jobs for building and testing the application. Ensure best practices for reusability and maintainability are followed.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Dockerize Application",
+            "description": "Create a Dockerfile and related configuration to containerize the application, ensuring compatibility with AWS ECS deployment requirements.",
+            "dependencies": [
+              1
+            ],
+            "details": "Write and test a Dockerfile, build the Docker image locally, and verify that the application runs as expected in a containerized environment.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Provision AWS Infrastructure with Terraform",
+            "description": "Write Terraform code to provision core AWS resources, including VPC, subnets, ECS cluster, IAM roles, and security groups.",
+            "dependencies": [
+              2
+            ],
+            "details": "Develop Terraform modules and configuration files to automate the creation of foundational AWS infrastructure required for ECS and related services.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Set Up S3 Bucket and CloudFront Distribution",
+            "description": "Configure Terraform to provision an S3 bucket for static assets and a CloudFront distribution for content delivery.",
+            "dependencies": [
+              3
+            ],
+            "details": "Define Terraform resources for S3 and CloudFront, set appropriate permissions, and configure cache behaviors and origins.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Provision Redis Service",
+            "description": "Add Terraform resources to provision a managed Redis instance (e.g., AWS ElastiCache) and configure networking and access.",
+            "dependencies": [
+              3
+            ],
+            "details": "Define Redis cluster parameters, subnet group, security groups, and ensure connectivity from ECS tasks.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Integrate Datadog Monitoring",
+            "description": "Configure Datadog monitoring for the deployed infrastructure and application, including ECS, Redis, and CloudFront metrics.",
+            "dependencies": [
+              3,
+              5
+            ],
+            "details": "Set up Datadog agents, define monitors and dashboards, and ensure integration with AWS resources via Terraform and environment variables.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Deploy Application to AWS ECS",
+            "description": "Automate deployment of the Dockerized application to AWS ECS using the GitHub Actions workflow and Terraform outputs.",
+            "dependencies": [
+              2,
+              3,
+              5
+            ],
+            "details": "Push Docker image to ECR, update ECS task definition and service, and verify deployment via ECS console or CLI.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Test and Validate CI/CD Pipeline",
+            "description": "Run end-to-end tests to validate the entire pipeline, including build, deployment, infrastructure provisioning, and monitoring integration.",
+            "dependencies": [
+              1,
+              7,
+              6
+            ],
+            "details": "Trigger pipeline runs, verify successful execution of all stages, and check application health, infrastructure status, and monitoring alerts.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Develop Maintenance and Support Dashboard",
+        "description": "Build a dashboard for managing maintenance tasks and notifications for system administrators.",
+        "details": "Design maintenance task schema with PostgreSQL and TypeORM. Implement REST API endpoints for task CRUD operations. Create React dashboard with Tailwind CSS and React Query for task management. Integrate notification system with Redis Pub/Sub and SendGrid for email alerts.",
+        "testStrategy": "Test maintenance task creation, status updates, and notification delivery. Validate dashboard UI and API integration.",
+        "priority": "low",
+        "dependencies": [
+          1,
+          2
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Maintenance Database Schema",
+            "description": "Define and document the database schema to support maintenance records, including tables, fields, relationships, and constraints.",
+            "dependencies": [],
+            "details": "Include entities such as maintenance tasks, users, notifications, and logs. Ensure the schema supports CRUD operations and notification tracking.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Develop REST API Endpoints",
+            "description": "Implement RESTful API endpoints for CRUD operations on maintenance records and notification management.",
+            "dependencies": [
+              1
+            ],
+            "details": "Follow REST best practices: use plural nouns for resources, appropriate HTTP methods (GET, POST, PUT, DELETE), JSON payloads, and proper status codes. Secure endpoints and provide documentation.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Build React Dashboard UI",
+            "description": "Create a React-based dashboard for users to view, create, update, and delete maintenance records and manage notifications.",
+            "dependencies": [
+              2
+            ],
+            "details": "Design modular components for listing, editing, and viewing maintenance tasks. Integrate with the REST API and ensure responsive, accessible UI.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Integrate Notification System",
+            "description": "Implement a notification system to alert users of maintenance events via in-app messages and/or push notifications.",
+            "dependencies": [
+              2,
+              3
+            ],
+            "details": "Connect the backend notification logic to the React dashboard. Ensure real-time or near-real-time updates using websockets or polling as appropriate.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Set Up Email Alert Functionality",
+            "description": "Configure backend logic to send email alerts for relevant maintenance events and notifications.",
+            "dependencies": [
+              4
+            ],
+            "details": "Integrate with an email service provider (e.g., SendGrid, SES). Ensure emails are triggered by specific events and include relevant details.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Implement End-to-End Testing",
+            "description": "Develop and execute end-to-end tests covering the full workflow: schema, API, UI, notifications, and email alerts.",
+            "dependencies": [
+              5
+            ],
+            "details": "Use testing frameworks to simulate user actions and verify system behavior across all layers. Ensure tests cover edge cases and notification delivery.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Optimize Performance, SEO, and Accessibility",
+        "description": "Implement code-splitting, lazy loading, prerendering, and accessibility enhancements for the frontend.",
+        "details": "Use Vite for code-splitting and lazy loading of React components. Implement prerendering or static snapshots for SEO using Next.js (next@14.x) or custom solution. Add ARIA roles, keyboard navigation, and WCAG-compliant styling with Tailwind CSS. Test with Lighthouse and axe-core (axe-core@4.x).",
+        "testStrategy": "Test performance with Lighthouse, validate accessibility with axe-core, and check SEO with Google Search Console.",
+        "priority": "medium",
+        "dependencies": [
+          1,
+          4
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Code-Splitting and Lazy Loading",
+            "description": "Refactor the frontend codebase to use route-based and component-based code splitting with lazy loading, ensuring only essential components are loaded initially.",
+            "dependencies": [],
+            "details": "Use React.lazy and Suspense for dynamic imports. Prioritize route-based code splitting for major routes and component-based splitting for large or non-essential components. Avoid lazy loading critical UI elements to maintain user experience.[1][2][3][4]",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Set Up Prerendering and Static Snapshot Generation",
+            "description": "Configure the build process to prerender key pages and generate static HTML snapshots to improve load times and SEO.",
+            "dependencies": [
+              1
+            ],
+            "details": "Integrate tools or frameworks that support static site generation or prerendering. Ensure that dynamic routes and lazy-loaded components are correctly handled in the prerendered output.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Enhance SEO Metadata and Structured Data",
+            "description": "Add and validate SEO-relevant metadata, structured data, and semantic HTML to all pages and components.",
+            "dependencies": [
+              2
+            ],
+            "details": "Ensure each page has unique titles, meta descriptions, canonical tags, and Open Graph/Twitter metadata. Use semantic HTML elements and add JSON-LD structured data where appropriate.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Improve Accessibility with ARIA and Keyboard Navigation",
+            "description": "Audit and enhance accessibility by adding appropriate ARIA attributes and ensuring full keyboard navigation support.",
+            "dependencies": [
+              3
+            ],
+            "details": "Review interactive components for ARIA roles, labels, and states. Ensure all functionality is accessible via keyboard and focus management is handled correctly.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Apply WCAG-Compliant Styling",
+            "description": "Update styles to meet WCAG 2.1 AA standards for color contrast, focus indicators, and text scalability.",
+            "dependencies": [
+              4
+            ],
+            "details": "Check and adjust color contrast ratios, ensure visible focus outlines, and support user font scaling. Use accessible color palettes and test with common assistive technologies.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Automate Lighthouse and axe-core Accessibility Testing",
+            "description": "Integrate Lighthouse and axe-core into the CI pipeline to automatically test for performance, accessibility, and SEO issues.",
+            "dependencies": [
+              5
+            ],
+            "details": "Set up automated runs of Lighthouse and axe-core on build or deployment. Review and address any reported issues, focusing on accessibility and SEO metrics.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Validate SEO Enhancements",
+            "description": "Perform manual and automated validation of SEO improvements using tools like Google Search Console, Lighthouse, and third-party SEO analyzers.",
+            "dependencies": [],
+            "details": "Check for correct indexing, rich results, and metadata rendering. Validate that prerendered content and lazy-loaded components are discoverable by search engines.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "created": "2025-07-05T06:58:39.396Z",
+      "updated": "2025-07-05T08:22:01.042Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

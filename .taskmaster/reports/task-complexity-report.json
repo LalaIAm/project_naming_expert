@@ -1,0 +1,93 @@
+{
+	"meta": {
+		"generatedAt": "2025-07-05T06:59:13.260Z",
+		"tasksAnalyzed": 10,
+		"totalTasks": 10,
+		"analysisCount": 10,
+		"thresholdScore": 5,
+		"projectName": "Taskmaster",
+		"usedResearch": true
+	},
+	"complexityAnalysis": [
+		{
+			"taskId": 1,
+			"taskTitle": "Initialize Monorepo and Project Scaffolding",
+			"complexityScore": 7,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Break down the initialization of the monorepo into subtasks covering: Yarn Workspaces setup, backend scaffolding (Express, TypeORM, PostgreSQL), frontend scaffolding (Vite, React), root-level script configuration, dependency management, code quality tooling (ESLint, Prettier, Husky), and verification/testing of the setup.",
+			"reasoning": "This task involves multiple frameworks and tools, cross-package coordination, and code quality automation. Each component (backend, frontend, tooling) requires distinct setup steps and integration, making the overall complexity above average but not extreme."
+		},
+		{
+			"taskId": 2,
+			"taskTitle": "Implement Authentication and User Management",
+			"complexityScore": 9,
+			"recommendedSubtasks": 9,
+			"expansionPrompt": "Expand into subtasks for user schema design, registration endpoint, login endpoint, password reset, JWT integration, Redis session management, SendGrid email integration, refresh token rotation, logout logic, and comprehensive integration testing.",
+			"reasoning": "This task covers secure authentication, session management, email workflows, and integration with multiple external services. Security, correctness, and test coverage are critical, increasing both technical and organizational complexity."
+		},
+		{
+			"taskId": 3,
+			"taskTitle": "Design and Implement Project Creation and Management",
+			"complexityScore": 8,
+			"recommendedSubtasks": 8,
+			"expansionPrompt": "Decompose into subtasks for project schema design, CRUD API endpoints, backend validation, frontend form implementation, React Query integration, progress tracking logic, Redis caching, and unit/integration testing.",
+			"reasoning": "This task requires full-stack CRUD, state management, caching, and robust validation. It spans both backend and frontend, with data consistency and performance considerations."
+		},
+		{
+			"taskId": 4,
+			"taskTitle": "Build Multi-Phase Wizard and Onboarding Flow",
+			"complexityScore": 7,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Break down into subtasks for wizard component architecture, phase navigation logic, progress indicator UI, onboarding tutorial backend, frontend tutorial display, progress persistence, and end-to-end testing.",
+			"reasoning": "The task involves complex UI state, user experience flows, backend integration for tutorials, and persistent progress tracking, but is focused on a single user-facing feature set."
+		},
+		{
+			"taskId": 5,
+			"taskTitle": "Integrate AI-Driven Audience Research and Strategy Workflows",
+			"complexityScore": 9,
+			"recommendedSubtasks": 10,
+			"expansionPrompt": "Expand into subtasks for schema design (questionnaire/persona/competitor), OpenAI API integration, async job queue setup, endpoint implementation, report generation, PDF export, data persistence, versioning, frontend integration, and workflow testing.",
+			"reasoning": "This task integrates advanced AI workflows, async processing, complex data structures, and report generation, requiring careful orchestration and error handling across multiple subsystems."
+		},
+		{
+			"taskId": 6,
+			"taskTitle": "Develop Brand Identity and Visual Asset Generation",
+			"complexityScore": 9,
+			"recommendedSubtasks": 10,
+			"expansionPrompt": "Decompose into subtasks for each AI generation endpoint (brand name, voice, story, tagline, logo, color palette), DALL·E and Stable Diffusion integration, image post-processing, asset storage, ZIP export, and comprehensive testing.",
+			"reasoning": "This task combines multiple AI models, image processing, asset management, and export logic, each with unique integration and validation requirements."
+		},
+		{
+			"taskId": 7,
+			"taskTitle": "Implement Brand Positioning and Collaboration Features",
+			"complexityScore": 8,
+			"recommendedSubtasks": 8,
+			"expansionPrompt": "Break down into subtasks for schema design (positioning, feedback, collaborators), AI endpoint implementation, feedback loop logic, invitation and comment endpoints, real-time notification setup, role/permission management, and testing.",
+			"reasoning": "This task blends AI-driven content, real-time collaboration, and complex role management, requiring both backend and frontend coordination."
+		},
+		{
+			"taskId": 8,
+			"taskTitle": "Set Up CI/CD Pipeline and Infrastructure Automation",
+			"complexityScore": 8,
+			"recommendedSubtasks": 8,
+			"expansionPrompt": "Expand into subtasks for GitHub Actions workflow creation, Dockerization, AWS ECS deployment, Terraform infrastructure provisioning, S3/CloudFront setup, Redis provisioning, Datadog monitoring, and pipeline testing.",
+			"reasoning": "This task covers automation across build, deployment, infrastructure, and monitoring, involving multiple cloud and DevOps tools with interdependencies."
+		},
+		{
+			"taskId": 9,
+			"taskTitle": "Develop Maintenance and Support Dashboard",
+			"complexityScore": 6,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Decompose into subtasks for maintenance schema design, REST API endpoints, React dashboard UI, notification system integration, email alert setup, and end-to-end testing.",
+			"reasoning": "While full-stack, this task is focused on CRUD and notification features for a limited user group, making it less complex than core product features."
+		},
+		{
+			"taskId": 10,
+			"taskTitle": "Optimize Performance, SEO, and Accessibility",
+			"complexityScore": 7,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Break down into subtasks for code-splitting/lazy loading, prerendering/static snapshot setup, SEO enhancements, accessibility improvements (ARIA, keyboard navigation), WCAG styling, Lighthouse/axe-core testing, and SEO validation.",
+			"reasoning": "This task requires cross-cutting enhancements to frontend code, with a focus on performance, SEO, and accessibility, each needing specialized testing and validation."
+		}
+	]
+}

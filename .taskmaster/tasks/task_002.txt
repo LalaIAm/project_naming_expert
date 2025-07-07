@@ -1,0 +1,67 @@
+# Task ID: 2
+# Title: Implement Authentication and User Management
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Develop user registration, login, password reset, and session management with JWT, Redis, and SendGrid.
+# Details:
+Design PostgreSQL user schema with email, hashed password, and verification status. Implement POST /api/auth/signup, POST /api/auth/login, POST /api/auth/password-reset endpoints with Joi validation, bcrypt (bcryptjs@2.x) for password hashing, and JWT (jsonwebtoken@9.x) for tokens. Use Redis (redis@4.x) for token blacklist and session caching. Integrate SendGrid (sendgrid@7.x) for email verification and password reset. Secure tokens in HttpOnly cookies. Implement refresh token rotation and logout logic.
+
+# Test Strategy:
+Write integration tests for signup, login, password reset, and logout endpoints using Jest (jest@29.x) and Supertest (supertest@6.x). Test token rotation, session invalidation, and email delivery.
+
+# Subtasks:
+## 1. Design User Schema [pending]
+### Dependencies: None
+### Description: Define the user schema to include fields for email, name, password, verification status, reset OTP, reset OTP expiration, and role assignment.
+### Details:
+Ensure the schema supports unique emails, secure password storage, a boolean 'isVerified' field, fields for password reset (OTP and expiration), and a reference to user roles for permissions management.
+
+## 2. Implement Registration Endpoint [pending]
+### Dependencies: 2.1
+### Description: Create an endpoint to handle new user registrations, including input validation and initial user creation.
+### Details:
+Validate required fields, hash passwords, set default values (e.g., isVerified: false), and store the new user in the database.
+
+## 3. Implement Login Endpoint [pending]
+### Dependencies: 2.1
+### Description: Develop an endpoint for user authentication using email and password.
+### Details:
+Verify credentials, check verification status, and prepare for JWT issuance upon successful authentication.
+
+## 4. Implement Password Reset Workflow [pending]
+### Dependencies: 2.1, 2.2
+### Description: Enable users to request and complete password resets using OTPs.
+### Details:
+Generate and store OTPs and expiration times, send OTPs via email, and allow users to reset their password upon OTP validation.
+
+## 5. Integrate JWT Authentication [pending]
+### Dependencies: 2.3
+### Description: Issue and validate JWTs for authenticated sessions.
+### Details:
+Generate JWTs on login, validate tokens on protected endpoints, and handle token expiration securely.
+
+## 6. Implement Redis Session Management [pending]
+### Dependencies: 2.5
+### Description: Use Redis to manage user sessions and store refresh tokens.
+### Details:
+Store session data and refresh tokens in Redis for efficient session validation and revocation.
+
+## 7. Integrate SendGrid for Email Delivery [pending]
+### Dependencies: 2.2, 2.4
+### Description: Set up SendGrid to send verification and password reset emails.
+### Details:
+Configure SendGrid API, implement email templates, and trigger emails for account verification and password resets.
+
+## 8. Implement Refresh Token Rotation and Logout Logic [pending]
+### Dependencies: None
+### Description: Securely rotate refresh tokens and handle user logout.
+### Details:
+On refresh, issue new tokens and invalidate old ones in Redis; on logout, remove session and tokens from Redis.
+
+## 9. Develop Comprehensive Integration Tests [pending]
+### Dependencies: 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8
+### Description: Write integration tests covering registration, login, password reset, JWT, session management, email delivery, token rotation, and logout.
+### Details:
+Ensure all authentication flows, security checks, and external integrations are tested for correctness and robustness.
+

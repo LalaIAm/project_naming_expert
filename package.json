@@ -1,0 +1,29 @@
+{
+  "name": "project-naming-expert",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-powered brand naming and identity platform",
+  "workspaces": [
+    "packages/api",
+    "packages/ui"
+  ],
+  "scripts": {
+    "bootstrap": "yarn install",
+    "build": "yarn workspaces run build",
+    "start": "yarn workspaces run start",
+    "dev": "concurrently \"yarn workspace @naming-expert/api dev\" \"yarn workspace @naming-expert/ui dev\"",
+    "test": "yarn workspaces run test",
+    "lint": "yarn workspaces run lint",
+    "format": "yarn workspaces run format"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.0"
+  },
+  "packageManager": "yarn@1.22.19"
+}

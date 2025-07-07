@@ -1,0 +1,55 @@
+# Task ID: 1
+# Title: Initialize Monorepo and Project Scaffolding
+# Status: pending
+# Dependencies: None
+# Priority: high
+# Description: Set up a monorepo structure with Yarn Workspaces, initialize backend (Node.js/Express/TypeORM) and frontend (React/Vite) packages, and configure root-level scripts for concurrent development.
+# Details:
+Create root package.json with workspaces for 'api' and 'ui'. Scaffold backend using Express generator (express-generator@latest), set up TypeORM (typeorm@0.3.x) with PostgreSQL (pg@8.x). Scaffold frontend using Vite (vite@latest) with React (react@18.x, react-dom@18.x). Add root scripts for bootstrapping, building, and running both packages concurrently. Use Yarn (yarn@1.22.x) for dependency management. Configure ESLint (eslint@8.x), Prettier (prettier@3.x), and Husky (husky@8.x) for code quality and Git hooks.
+
+# Test Strategy:
+Verify monorepo structure, package scripts, and code quality tools by running yarn install, yarn build, and yarn lint in both packages. Test Git hooks with staged files.
+
+# Subtasks:
+## 1. Initialize Monorepo and Configure Yarn Workspaces [pending]
+### Dependencies: None
+### Description: Set up the root directory as a Yarn monorepo, configure package.json with workspaces, and ensure the folder structure supports both backend and frontend packages.
+### Details:
+Create a root-level package.json with a 'workspaces' field listing the backend and frontend directories. Initialize the monorepo with 'yarn init -y' and verify workspace recognition with 'yarn workspaces info'.
+
+## 2. Scaffold Backend: Express, TypeORM, PostgreSQL [pending]
+### Dependencies: 1.1
+### Description: Create the backend package with Express, TypeORM, and PostgreSQL integration, including TypeScript setup and database configuration.
+### Details:
+Generate a backend directory/package. Install Express, TypeORM, pg, and TypeScript. Set up TypeORM configuration (e.g., ormconfig.json) for PostgreSQL connection. Scaffold a basic Express server and connect it to the database using TypeORM.[1][4]
+
+## 3. Scaffold Frontend: Vite and React [pending]
+### Dependencies: 1.1
+### Description: Create the frontend package using Vite and React, ensuring it is properly configured for development within the monorepo.
+### Details:
+Generate a frontend directory/package using 'yarn create vite' or similar. Select React as the template. Ensure the frontend package.json is set up for workspace compatibility.
+
+## 4. Configure Root-Level Scripts [pending]
+### Dependencies: 1.2, 1.3
+### Description: Add scripts to the root package.json for common tasks such as bootstrapping, building, and running both backend and frontend.
+### Details:
+Define scripts like 'yarn build', 'yarn start', and 'yarn dev' at the root level to orchestrate commands across packages. Use Yarn workspaces run or tools like concurrently if needed.
+
+## 5. Manage Shared and Package Dependencies [pending]
+### Dependencies: 1.2, 1.3
+### Description: Install and organize dependencies and devDependencies for both backend and frontend, ensuring no duplication and proper workspace linking.
+### Details:
+Use Yarn workspace commands to add dependencies to the correct package. Deduplicate shared dependencies at the root if possible. Ensure TypeScript, types, and other shared tools are installed appropriately.
+
+## 6. Set Up Code Quality Tooling (ESLint, Prettier, Husky) [pending]
+### Dependencies: 1.5
+### Description: Configure ESLint and Prettier for both backend and frontend, and set up Husky for pre-commit hooks at the monorepo level.
+### Details:
+Install ESLint and Prettier as devDependencies, create shared or package-specific config files, and set up Husky in the root to run linting/formatting on commit.
+
+## 7. Verify and Test Monorepo Setup [pending]
+### Dependencies: 1.4, 1.6
+### Description: Run all configured scripts, start backend and frontend, and verify code quality tooling is enforced. Ensure backend connects to PostgreSQL and frontend builds successfully.
+### Details:
+Start both backend and frontend, check for successful connections and builds, and run lint/format scripts. Optionally, add a sample test for each package to confirm the setup.
+
