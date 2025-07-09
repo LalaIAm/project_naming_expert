@@ -5,6 +5,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { IsEmail, IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { Role } from "./Role";
 
 @Entity("users")
 export class User {
@@ -12,25 +14,38 @@ export class User {
   id: string;
 
   @Column({ unique: true })
+  @IsEmail()
+  @IsNotEmpty()
   email: string;
 
   @Column()
+  @IsString()
+  @IsNotEmpty()
   name: string;
 
   @Column()
+  @IsString()
+  @IsNotEmpty()
   password: string;
 
   @Column({ default: false })
   isVerified: boolean;
 
   @Column({ nullable: true })
-  resetToken: string;
+  @IsString()
+  @IsOptional()
+  resetOTP: string;
 
-  @Column({ nullable: true })
-  resetTokenExpiry: Date;
+  @Column({ type: "timestamp", nullable: true })
+  @IsOptional()
+  resetOTPExpiration: Date;
 
-  @Column({ default: "user" })
-  role: string;
+  @Column({
+    type: "enum",
+    enum: Role,
+    default: Role.USER,
+  })
+  role: Role;
 
   @CreateDateColumn()
   createdAt: Date;
