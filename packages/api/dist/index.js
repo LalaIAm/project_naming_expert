@@ -19,32 +19,34 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 // Health check endpoint
-app.get('/health', (req, res) => {
+app.get("/health", (req, res) => {
     res.status(200).json({
-        status: 'ok',
-        message: 'Project Naming Expert API is running',
+        status: "ok",
+        message: "Project Naming Expert API is running",
         timestamp: new Date().toISOString(),
     });
 });
 // API routes will be added here
-app.get('/api', (req, res) => {
+app.get("/api", (req, res) => {
     res.json({
-        message: 'Welcome to Project Naming Expert API',
-        version: '1.0.0',
+        message: "Welcome to Project Naming Expert API",
+        version: "1.0.0",
     });
 });
 // Error handling middleware
-app.use((err, req, res, next) => {
-    console.error('Error:', err);
+app.use((err, req, res, _next) => {
+    console.error("Error:", err);
     res.status(500).json({
-        error: 'Internal server error',
-        message: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong',
+        error: "Internal server error",
+        message: process.env.NODE_ENV === "development"
+            ? err.message
+            : "Something went wrong",
     });
 });
 // 404 handler
-app.use('*', (req, res) => {
+app.use("*", (req, res) => {
     res.status(404).json({
-        error: 'Not found',
+        error: "Not found",
         message: `Route ${req.originalUrl} not found`,
     });
 });
@@ -53,7 +55,7 @@ const startServer = async () => {
     try {
         // Initialize database connection
         await database_1.AppDataSource.initialize();
-        console.log('✅ Database connection established');
+        console.log("✅ Database connection established");
         // Start server
         app.listen(PORT, () => {
             console.log(`🚀 Server running on port ${PORT}`);
@@ -62,7 +64,7 @@ const startServer = async () => {
         });
     }
     catch (error) {
-        console.error('❌ Error starting server:', error);
+        console.error("❌ Error starting server:", error);
         process.exit(1);
     }
 };

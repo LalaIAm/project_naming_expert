@@ -1,8 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from "typeorm";
 
-@Entity('users')
+@Entity("users")
 export class User {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column({ unique: true })
@@ -23,7 +29,7 @@ export class User {
   @Column({ nullable: true })
   resetTokenExpiry: Date;
 
-  @Column({ default: 'user' })
+  @Column({ default: "user" })
   role: string;
 
   @CreateDateColumn()

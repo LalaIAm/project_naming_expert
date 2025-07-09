@@ -25,7 +25,7 @@ let User = class User {
 };
 exports.User = User;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
+    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], User.prototype, "id", void 0);
 __decorate([
@@ -53,7 +53,7 @@ __decorate([
     __metadata("design:type", Date)
 ], User.prototype, "resetTokenExpiry", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ default: 'user' }),
+    (0, typeorm_1.Column)({ default: "user" }),
     __metadata("design:type", String)
 ], User.prototype, "role", void 0);
 __decorate([
@@ -65,6 +65,6 @@ __decorate([
     __metadata("design:type", Date)
 ], User.prototype, "updatedAt", void 0);
 exports.User = User = __decorate([
-    (0, typeorm_1.Entity)('users')
+    (0, typeorm_1.Entity)("users")
 ], User);
 //# sourceMappingURL=User.js.map
